@@ -118,6 +118,30 @@
   set heading(numbering: "1.1")
   set par(justify: true)
 
+  // Add a counter for level-1 headings
+  let section_counter = counter("section-counter")
+  
+  // Create a show rule for headings to auto-insert page breaks
+  show heading: it => {
+    if it.level == 1 {
+      // Get the current section count
+      let count = section_counter.get().at(0, default: 0)
+      // Increment for next time
+      section_counter.step()
+      
+      // If this isn't the first section, add a page break
+      if count > 0 {
+        pagebreak(weak: true)
+      }
+      
+      // Display the heading
+      it
+    } else {
+      // For non-level-1 headings, just display them normally
+      it
+    }
+  }
+
   v(1em)
   // use ITU font for the title page
   set text(font: ("Open Sans", font), lang: "en")
@@ -164,7 +188,16 @@
 
   align(center, text(2.6em, weight: "bold", title))
 
-  align(center, text(1.2em, "By"))
+  align(
+    center,
+    [
+      #line(length: 60%, stroke: 0.5pt + gray)
+      #v(1em)
+      #text(1.1em, smallcaps[Authors])
+      #v(1em)
+    ],
+  )
+  // align(center, text(1.2em, "By"))
 
   // Grid layout for authors - adaptive columns based on count
   let author_columns = calc.min(max_author_columns, authors.len())
@@ -174,7 +207,7 @@
     ..authors.map(author => align(
       center,
       text(
-        1.2em,
+        1.1em,
         [
           *#author.name* \
           #author.email
@@ -183,11 +216,11 @@
     ))
   )
 
-  v(4em)
+  v(8em)
 
   // If advisers exist, add them with proper spacing
   if advisers.len() > 0 {
-    align(center, text(1.2em, "Advised by"))
+    align(center, text(1.1em, "Advised by"))
     v(0.8em)
 
     let adviser_columns = calc.min(max_adviser_columns, advisers.len())
@@ -197,7 +230,7 @@
       ..advisers.map(adviser => align(
         center,
         text(
-          1.2em,
+          1.1em,
           [
             *#adviser.name* \
             #adviser.email

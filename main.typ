@@ -6,7 +6,7 @@
   course_code: "Course Code",
   document_type: "Document Type",
 
-  title: "Typst Template for ITU",
+  title: "A Typst Template for ITU",
 
   authors: (
     (
@@ -79,7 +79,7 @@
 )
 
 = Analysis
-#lorem(300)
+#lorem(700)
 
 = Discussion
 #lorem(20)
