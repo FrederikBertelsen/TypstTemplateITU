@@ -4,15 +4,45 @@
   department: "Department of Computer Science",
   course_name: "Course Name",
   course_code: "Course Code",
+  document_type: "Document Type",
 
   title: "Typst Template for ITU",
 
   authors: (
     (
-      name: "Frederik Bjerre Bertelsen",
-      email: "frbb@itu.dk",
+      name: "John Smith",
+      email: "josm@itu.dk",
+    ),
+    (
+      name: "Jane Doe",
+      email: "jado@itu.dk",
+    ),
+    (
+      name: "James Johnson",
+      email: "jajo@itu.dk",
+    ),
+    (
+      name: "Jennifer Brown",
+      email: "jebr@itu.dk",
     ),
   ),
+  max_author_columns: 2,
+
+  advisers: (
+    (
+      name: "Dr. Jane Smith",
+      email: "jsmi@itu.dk",
+    ),
+    (
+      name: "Prof. John Doe",
+      email: "jdoe@itu.dk",
+    ),
+    (
+      name: "Prof. Robert Wilson",
+      email: "rowi@itu.dk",
+    ),
+  ),
+  max_adviser_columns: 3,
 
   abstract: lorem(200),
 )

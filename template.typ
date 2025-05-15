@@ -22,7 +22,7 @@
 /**
  * Determines if a secondary heading appears after a main heading in the document flow.
  * Used to decide which heading to display in the header.
- * 
+ *
  * @param secondaryHeading - The secondary heading to check
  * @param mainHeading - The main heading to compare against
  * @returns boolean - True if secondary heading appears after main heading
@@ -41,13 +41,13 @@
 
 /**
  * Dynamically generates the page header based on document headings.
- * 
+ *
  * Algorithm:
  * 1. Check if a level 1 heading exists on the current page
  * 2. If not, find the most recent level 1 heading
  * 3. Then check if there's a secondary heading after that main heading
  * 4. Construct appropriate header based on these findings
- * 
+ *
  * @returns The appropriate header content for the current page
  */
 #let getHeader() = {
@@ -61,7 +61,7 @@
   } else {
     // Fall back to the most recent level 1 heading
     let lastMainHeading = query(selector(heading).before(loc)).filter(headIt => headIt.level == 1).last()
-    
+
     // Find the most recent secondary heading
     let previousSecondaryHeadingArray = query(selector(heading).before(loc)).filter(headIt => headIt.level > 1)
     let lastSecondaryHeading = if (previousSecondaryHeadingArray.len() != 0) {
@@ -69,7 +69,7 @@
     } else {
       none
     }
-    
+
     // Determine which header format to use based on heading positions
     if (lastSecondaryHeading != none and isAfter(lastSecondaryHeading, lastMainHeading)) {
       buildSecondaryHeader(lastMainHeading.body, lastSecondaryHeading.body)
@@ -97,14 +97,18 @@
  */
 #let project(
   logo: "logo/logo.svg",
-  logo_width: 80%,
+  logo_width: 70%,
   logo_small: "logo/logo_small.png",
+  document_type: none,
   department: none,
   course_name: none,
   course_code: none,
   title: "",
   abstract: [],
   authors: (),
+  max_author_columns: 3,
+  advisers: (),
+  max_adviser_columns: 3,
   font: "New Computer Modern",
   body,
 ) = {
@@ -114,8 +118,8 @@
   set heading(numbering: "1.1")
   set par(justify: true)
 
-  v(0.03fr)
-
+  v(1em)
+  // use ITU font for the title page
   set text(font: ("Open Sans", font), lang: "en")
 
   // Display institution logo
@@ -125,9 +129,9 @@
 
   // Format department and course information
   if department != none {
-    align(center, text(1.6em, department))
+    align(center, text(1.4em, department))
   }
-  
+
   // Build course display string with appropriate fallbacks
   let course = if course_name != none and course_code != none {
     course_name + " - " + course_code
@@ -138,39 +142,70 @@
   } else {
     ""
   }
-  
+
   if course != "" {
     if department != none {
-      v(-0.5em)  // Reduce spacing if department is also present
+      v(-0.5em) // Reduce spacing if department is also present
     }
-    align(center, text(1.6em, course))
+    align(center, text(1.4em, course))
   }
 
-  v(0.1fr)
+  v(4em)
 
   set text(font: font, lang: "en")
 
   // Title page content
-  align(center, text(3em, weight: "bold", title))
+  if document_type != none {
+    align(center, text(1.6em, document_type))
+    v(1em)
+  } else {
+    v(4em) // Extra space if no document type
+  }
+
+  align(center, text(2.6em, weight: "bold", title))
 
   align(center, text(1.2em, "By"))
-  
-  // Format and display author information
-  pad(
-    top: 0.7em,
-    grid(
-      columns: 1fr,
-      gutter: 1em,
-      ..authors.map(author => align(
-        center,
-        text(1.6em, [
+
+  // Grid layout for authors - adaptive columns based on count
+  let author_columns = calc.min(max_author_columns, authors.len())
+  grid(
+    columns: (1fr,) * author_columns,
+    gutter: 2em,
+    ..authors.map(author => align(
+      center,
+      text(
+        1.2em,
+        [
           *#author.name* \
-          #author.email \
-        ]),
-      ))
-    ),
+          #author.email
+        ],
+      ),
+    ))
   )
-  v(0.2fr)
+
+  v(4em)
+
+  // If advisers exist, add them with proper spacing
+  if advisers.len() > 0 {
+    align(center, text(1.2em, "Advised by"))
+    v(0.8em)
+
+    let adviser_columns = calc.min(max_adviser_columns, advisers.len())
+    grid(
+      columns: (1fr,) * adviser_columns,
+      gutter: 2em,
+      ..advisers.map(adviser => align(
+        center,
+        text(
+          1.2em,
+          [
+            *#adviser.name* \
+            #adviser.email
+          ],
+        ),
+      ))
+    )
+  }
 
   set text(font: "New Computer Modern", lang: "en")
 
@@ -181,7 +216,7 @@
   v(1fr)
   align(center, heading(outlined: false, numbering: none, text(0.85em, smallcaps[Abstract])))
   abstract
-  v(1.618fr)  // Golden ratio spacing
+  v(1.618fr) // Golden ratio spacing
 
   // Table of contents with reset page counter
   counter(page).update(1)
