@@ -1,4 +1,3 @@
-// Header utilities
 #let build_main_header(content) = {
   align(center, smallcaps(content))
   line(length: 100%)
@@ -56,12 +55,11 @@
   }
 }
 
-// Footer utilities
 #let create_footer(logo_small, show_page_total: true) = {
   line(length: 100%)
   place(center + horizon)[
     #text(
-      1em,
+      1.2em,
       counter(page).display(
         "1 / 1",
         both: show_page_total,
@@ -106,6 +104,7 @@
   advisers,
   max_adviser_columns,
   font,
+  date,
 ) = {
   v(1em)
   set text(font: ("Open Sans", font), lang: "en")
@@ -156,7 +155,7 @@
     [
       #line(length: 60%, stroke: 0.5pt + gray)
       #v(1em)
-      #text(1.1em, smallcaps[Authors])
+      #text(1.2em, smallcaps[Authors])
       #v(1em)
     ],
   )
@@ -168,7 +167,7 @@
     ..authors.map(author => align(
       center,
       text(
-        1.1em,
+        1.2em,
         [
           *#author.name* \
           #author.email
@@ -181,7 +180,7 @@
 
   // Advisers section (if any)
   if advisers.len() > 0 {
-    align(center, text(1.1em, "Advised by"))
+    align(center, text(1.2em, "Advised by"))
     v(0.8em)
 
     let adviser_columns = calc.min(max_adviser_columns, advisers.len())
@@ -191,7 +190,7 @@
       ..advisers.map(adviser => align(
         center,
         text(
-          1.1em,
+          1.2em,
           [
             *#adviser.name* \
             #adviser.email
@@ -201,7 +200,9 @@
     )
   }
 
-  set text(font: "New Computer Modern", lang: "en")
+  v(8em)
+  align(center, text(1.2em, date))
+
   pagebreak()
 }
 
@@ -239,6 +240,7 @@
   max_adviser_columns: 3,
   font: "New Computer Modern",
   show_page_total: true,
+  date: datetime.today().display("[month repr:long] [day], [year]"),
   body,
 ) = {
   // Document metadata and basic styling
@@ -261,6 +263,7 @@
     advisers,
     max_adviser_columns,
     font,
+    date,
   )
 
   // Create abstract page
