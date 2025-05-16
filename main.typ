@@ -44,80 +44,17 @@
   ),
   max_adviser_columns: 3,
 
-  abstract: lorem(200),
+  abstract: include "sections/0_abstract.typ",
 )
 
-= Terms & Abbreviations
-
-
-= Introduction
-#lorem(400) @feminism
-
-== Motivation
-#lorem(300) @dependence
-
-== Research Questions
-#lorem(200)
-#parbreak()
-#list(
-  lorem(10),
-  lorem(15),
-  lorem(20),
-  lorem(7),
-  lorem(18),
-  lorem(22),
-  lorem(10),
-)
-
-
-= Background
-#lorem(200)
-== Related Work
-#lorem(500)
-
-== More related work
-#lorem(100)
-#figure(
-  image("Business.jpg", width: 70%),
-  caption: "Serious Business.",
-)
-
-= Analysis
-#lorem(150)
-#parbreak()
-#lorem(150)
-#parbreak()
-#lorem(200)
-
-= Discussion
-#lorem(100) 
-#parbreak()
-#lorem(350)
-#v(2em)
-#figure(
-  table(
-    columns: 5,
-    [Aligner], [publication], [Indexing], [Pairwise alignment], [Max. read length (bp)],
-    [BWA], [2009], [BWT-FM], [Semi-Global], [125],
-    [Bowtie], [2009], [BWT-FM], [HD], [76],
-    [CloudBurst], [2009], [Hashing], [Landau-Vishkin], [36],
-    [GNUMAP], [2009], [Hashing], [NW], [36],
-  ),
-)
-
-= Conclusion
-#lorem(150)
-#parbreak()
-#lorem(150)
-
-= Future Work
-#lorem(50)
-#parbreak()
-#lorem(60)
-#parbreak()
-#lorem(40)
-#parbreak()
-#lorem(70)
+// import sections
+#include "sections/1_terms_abbreviations.typ"
+#include "sections/2_introduction.typ"
+#include "sections/3_background.typ"
+#include "sections/4_analysis.typ"
+#include "sections/5_discussion.typ"
+#include "sections/6_conclusion.typ"
+#include "sections/7_future_work.typ"
 
 // Bibliography section
 #pagebreak(weak: true)
