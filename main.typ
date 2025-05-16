@@ -90,10 +90,20 @@
 #lorem(200)
 
 = Discussion
-#lorem(100)
+#lorem(100) 
 #parbreak()
-#lorem(500)
-
+#lorem(350)
+#v(2em)
+#figure(
+  table(
+    columns: 5,
+    [Aligner], [publication], [Indexing], [Pairwise alignment], [Max. read length (bp)],
+    [BWA], [2009], [BWT-FM], [Semi-Global], [125],
+    [Bowtie], [2009], [BWT-FM], [HD], [76],
+    [CloudBurst], [2009], [Hashing], [Landau-Vishkin], [36],
+    [GNUMAP], [2009], [Hashing], [NW], [36],
+  ),
+)
 
 = Conclusion
 #lorem(150)
