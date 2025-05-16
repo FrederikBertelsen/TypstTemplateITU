@@ -56,6 +56,21 @@
   }
 }
 
+// Footer utilities
+#let create_footer(logo_small, show_page_total: true) = {
+  line(length: 100%)
+  place(center + horizon)[
+    #text(
+      1em,
+      counter(page).display(
+        "1 / 1",
+        both: show_page_total,
+      ),
+    )
+  ]
+  place(right + horizon, image(logo_small, width: 10%))
+}
+
 // Document component functions
 #let setup_section_page_breaks(body) = {
   let section_counter = counter("section-counter")
@@ -223,6 +238,7 @@
   advisers: (),
   max_adviser_columns: 3,
   font: "New Computer Modern",
+  show_page_total: true,
   body,
 ) = {
   // Document metadata and basic styling
@@ -254,9 +270,13 @@
   create_toc_page()
 
   // Configure main content
-  set page(numbering: "1", number-align: center, margin: auto)
   set par(first-line-indent: 20pt)
-  set page(header: context create_dynamic_header())
+  set page(
+    header: context create_dynamic_header(),
+    footer: context create_footer(logo_small, show_page_total: show_page_total),
+  )
+
+
   counter(page).update(1)
 
   // Apply section page breaks and render body
