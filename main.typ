@@ -47,29 +47,33 @@
   abstract: lorem(200),
 )
 
-
-= Terms and Abbreviations
+= Terms & Abbreviations
 
 
 = Introduction
 #lorem(400) @feminism
 
 == Motivation
-#lorem(200) @dependence
+#lorem(300) @dependence
 
 == Research Questions
-#lorem(20)
+#lorem(200)
+#parbreak()
 #list(
-  "What is the impact of X on Y?",
-  "How does A affect B?",
-  "What are the implications of C for D?",
+  lorem(10),
+  lorem(15),
+  lorem(20),
+  lorem(7),
+  lorem(18),
+  lorem(22),
+  lorem(10),
 )
 
 
 = Background
-#lorem(100)
+#lorem(200)
 == Related Work
-#lorem(100)
+#lorem(500)
 
 == More related work
 #lorem(100)
@@ -79,19 +83,31 @@
 )
 
 = Analysis
-#lorem(700)
+#lorem(150)
+#parbreak()
+#lorem(150)
+#parbreak()
+#lorem(200)
 
 = Discussion
-#lorem(20)
+#lorem(100)
 #parbreak()
 #lorem(500)
 
+
 = Conclusion
 #lorem(150)
+#parbreak()
 #lorem(150)
 
 = Future Work
-#lorem(300)
+#lorem(50)
+#parbreak()
+#lorem(60)
+#parbreak()
+#lorem(40)
+#parbreak()
+#lorem(70)
 
 // Bibliography section
 #pagebreak(weak: true)
