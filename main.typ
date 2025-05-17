@@ -49,6 +49,8 @@
   abstract: include "sections/0_abstract.typ",
 )
 
+
+
 // import sections
 #include "sections/1_introduction.typ"
 #include "sections/2_background.typ"
@@ -57,23 +59,18 @@
 #include "sections/5_conclusion.typ"
 #include "sections/6_future_work.typ"
 
-// Glossary section
-// #let entry-list = yaml("glossary.yaml")
-// #register-glossary(entry-list)
-// #print-glossary(entry-list, show-all: true)
 
+
+// Glossary section
 #pagebreak(weak: true)
 #set page(header: [])
 = Glossary
-
 #let entry-list = read-glossary-entries("glossary.yaml")
-
 #register-glossary(entry-list)
-// Your document body
 #print-glossary(entry-list, show-all: true)
 
 // Bibliography section
 #pagebreak(weak: true)
 #set page(header: [])
 = Bibliography
-#bibliography("bib.yaml", style: "apa", title: none)
+#bibliography("bib.yaml", style: "ieee", title: none, full: true)

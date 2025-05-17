@@ -33,7 +33,7 @@ rl:
   long: Reinforcement Learning
   plural: RL techniques
   longplural: Reinforcement Learning methods
-  description: A machine learning approach where an agent learns to make decisions by performing actions in an environment to maximize cumulative rewards. Unlike supervised learning, reinforcement learning requires no labeled data, instead learning through trial and error interactions with the environment. #gls("ml", long: true)
+  description: A machine learning approach where an agent learns to make decisions by performing actions in an environment to maximize cumulative rewards. Unlike supervised learning, reinforcement learning requires no labeled data, instead learning through trial and error interactions with the environment.
 
 itu:
   short: ITU
@@ -69,10 +69,3 @@ lod:
   plural: LODs
   longplural: Levels of Detail
   description: A technique used in computer graphics and 3D rendering to decrease the complexity of a 3D model as it moves away from the viewer or based on other metrics. This optimization helps maintain performance and frame rates by reducing the computational load for objects that contribute less to the final image quality.
-
-notused:
-  short: Not used
-  long: Not used term
-  plural: unused terms
-  longplural: Not used terms
-  description: This key is not cited anywhere, it won't be in the glossary unless the `show-all` argument is set to true
