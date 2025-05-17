@@ -313,6 +313,7 @@
   show_page_total: true,
   date: datetime.today().display("[month repr:long] [day], [year]"),
   page_break_after_sections: true,
+  dark_mode: false,
   body,
 ) = {
   // Document metadata and basic styling
@@ -320,8 +321,14 @@
   show math.equation: it => set text(weight: 400)
   set heading(numbering: "1.1")
   set par(justify: true, first-line-indent: 20pt)
-  show link: set text(fill: blue.darken(60%))
-  show ref: set text(fill: blue.darken(60%))
+
+  // dark mode
+  set page(fill: if dark_mode { black } else { white })
+  set text(fill: if dark_mode { white } else { black })
+  let link_fill = if dark_mode { blue.lighten(40%) } else { blue.darken(60%) }
+  show link: set text(fill: link_fill)
+  show ref: set text(fill: link_fill)
+
 
   // Create title page
   create_title_page(

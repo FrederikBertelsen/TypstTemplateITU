@@ -10,6 +10,7 @@ Academic document template for [IT University of Copenhagen](https://itu.dk/), b
 - Automatic table of contents
 - bibliography system for sources and references
 - Glossary system for technical terms
+- Dark mode
 
 ## Getting Started
 
@@ -38,6 +39,8 @@ Academic document template for [IT University of Copenhagen](https://itu.dk/), b
    - The sections are split into files for organization (see the `sections` folder)
    - you can include new sections by adding them to the [`main.typ`](main.typ) file
 
+> [!NOTE]
+> You can enable dark mode if you prefer while you're working.
 
 ## Get Started with Typst
 

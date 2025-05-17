@@ -4,6 +4,8 @@
 #register-glossary(read-glossary-entries("glossary.yaml"))
 
 #show: project.with(
+  dark_mode: false,
+
   department: "Department of Computer Science",
   course_name: "Course Name",
   course_code: "Course Code",
