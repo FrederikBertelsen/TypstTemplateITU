@@ -312,6 +312,7 @@
   font: "New Computer Modern",
   show_page_total: true,
   date: datetime.today().display("[month repr:long] [day], [year]"),
+  page_break_after_sections: true,
   body,
 ) = {
   // Document metadata and basic styling
@@ -319,7 +320,7 @@
   show math.equation: it => set text(weight: 400)
   set heading(numbering: "1.1")
   set page(numbering: "1") // to change the numbering style, look at the 'create_footer' function
-  set par(justify: true)
+  set par(justify: true, first-line-indent: 20pt)
   show link: set text(fill: blue.darken(60%))
   show ref: set text(fill: blue.darken(60%))
 
@@ -347,15 +348,17 @@
   create_toc_page()
 
   // Configure main content
-  set par(first-line-indent: 20pt)
   set page(
     header: context create_dynamic_header(),
     footer: context create_footer(logo_small, show_page_total: show_page_total),
   )
 
-
   counter(page).update(1)
 
   // Apply section page breaks and render body
-  setup_section_page_breaks(body)
+  if page_break_after_sections {
+    setup_section_page_breaks(body)
+  } else {
+    body
+  }
 }
