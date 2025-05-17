@@ -297,8 +297,10 @@
 // This function is the main entry point for the document template.
 #let project(
   logo: "logo/logo.svg",
-  logo_width: 70%,
+  logo_dark_mode: "logo/logo_dark_mode.svg",
   logo_small: "logo/logo_small.png",
+  logo_small_dark_mode: "logo/logo_small_dark_mode.png",
+  logo_width: 70%,
   document_type: none,
   department: none,
   course_name: none,
@@ -325,14 +327,14 @@
   // dark mode
   set page(fill: if dark_mode { black } else { white })
   set text(fill: if dark_mode { white } else { black })
-  let link_fill = if dark_mode { blue.lighten(40%) } else { blue.darken(60%) }
+  let link_fill = if dark_mode { blue.lighten(60%) } else { blue.darken(60%) }
   show link: set text(fill: link_fill)
   show ref: set text(fill: link_fill)
 
 
   // Create title page
   create_title_page(
-    logo,
+    if dark_mode { logo_dark_mode } else { logo },
     logo_width,
     department,
     course_name,
@@ -356,7 +358,10 @@
   // Configure main content
   set page(
     header: context create_dynamic_header(),
-    footer: context create_footer(logo_small, show_page_total: show_page_total),
+    footer: context create_footer(
+      if dark_mode { logo_small_dark_mode } else { logo_small },
+      show_page_total: show_page_total,
+    ),
   )
 
   counter(page).update(1)
