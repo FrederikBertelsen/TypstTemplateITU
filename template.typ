@@ -155,7 +155,7 @@
     [
       #line(length: 60%, stroke: 0.5pt + gray)
       #v(1em)
-      #text(1.2em, smallcaps[Authors])
+      #text(1.2em, smallcaps[By])
       #v(1em)
     ],
   )
@@ -180,7 +180,7 @@
 
   // Advisers section (if any)
   if advisers.len() > 0 {
-    align(center, text(1.2em, "Advised by"))
+    align(center, text(1.2em, smallcaps[Advised by]))
     v(0.8em)
 
     let adviser_columns = calc.min(adviser_columns, advisers.len())
