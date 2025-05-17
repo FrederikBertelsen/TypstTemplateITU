@@ -1,5 +1,5 @@
 
-# ITU Typst Academic Document Template
+# ITU Typst Template
 
 Academic document template for [IT University of Copenhagen](https://itu.dk/), built with [Typst](https://typst.app/).
 
