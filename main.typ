@@ -1,8 +1,8 @@
-#import "@preview/glossarium:0.5.6": make-glossary, print-glossary
-#show : make-glossary
-#include "utilities/glossary-import.typ"
+#import "template.typ": project, read-glossary-entries, read-glossary-entries
+#import "@preview/glossarium:0.5.6": *
+#show: make-glossary
+#register-glossary(read-glossary-entries("glossary.yaml"))
 
-#import "template.typ": project, read-glossary-entries
 #show: project.with(
   department: "Department of Computer Science",
   course_name: "Course Name",

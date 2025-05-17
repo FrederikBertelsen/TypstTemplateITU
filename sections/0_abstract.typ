@@ -1,5 +1,5 @@
 // this is needed to make the glossary work
-#include "../utilities/glossary-import.typ"
+#import "@preview/glossarium:0.5.6": *
 
 
 

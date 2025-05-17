@@ -1,15 +1,31 @@
 // this is needed to make the glossary work
-#include "../utilities/glossary-import.typ"
+#import "@preview/glossarium:0.5.6": *
+
+= Introduction <introduction>
+You can reference sections (_analysis_ for example):
+- *By section*: #ref(<analysis>). 
+- *By page*: #ref(<analysis>, form: "page").
+
+== References
+=== Glossary
+When using the glossary, only the first reference will be in full form (unless specified).
+- *Here is the first reference*: @ai
+- *Here is the second reference*: @ai
+- *Here is the third reference*: @ai
+- *Here is a forced full reference*: #gls("ai", long: true)
+- *Here is plural reference*: @ai:pl
+- *Here is a forced full plural reference*: #glspl("ai", long: true)
+
+=== Bibliography Explained
+You can reference the bibliography in the same way as the glossary.
+- *Like this*: @quantum_computing
+- *Or like this*: #ref(<quantum_computing>)
 
 
-
-= Introduction
-#lorem(400)
 
 == Motivation
 #lorem(300)
 
-This is a reference to a glossary entry: @ai
 
 == Research Questions
 #lorem(200)

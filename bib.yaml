@@ -1,4 +1,5 @@
-# https://github.com/typst/hayagriva/blob/main/docs/file-format.md
+# https://typst.app/docs/reference/model/ref/
+# file format: https://github.com/typst/hayagriva/blob/main/docs/file-format.md
 
 quantum_computing:
   type: article
