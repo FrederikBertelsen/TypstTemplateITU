@@ -319,7 +319,6 @@
   set document(author: authors.map(a => a.name), title: title)
   show math.equation: it => set text(weight: 400)
   set heading(numbering: "1.1")
-  set page(numbering: "1") // to change the numbering style, look at the 'create_footer' function
   set par(justify: true, first-line-indent: 20pt)
   show link: set text(fill: blue.darken(60%))
   show ref: set text(fill: blue.darken(60%))
@@ -354,6 +353,8 @@
   )
 
   counter(page).update(1)
+
+  set page(numbering: "1") // to change the numbering style, look at the 'create_footer' function
 
   // Apply section page breaks and render body
   if page_break_after_sections {
