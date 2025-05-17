@@ -1,26 +1,19 @@
 
 # ITU Typst Academic Document Template
 
-A professionally formatted template for academic documents at the IT University of Copenhagen, built with [Typst](https://typst.app/).
+Academic document template for [IT University of Copenhagen](https://itu.dk/), built with [Typst](https://typst.app/).
 
 [View example PDF output](main.pdf)
 
 ## Features
-
-- Clean, modular code structure with consistent naming conventions
-- ITU-compliant styling with proper branding
-- Customizable title page with department, course information, and document type
-- Authors and advisers sections with configurable column layout
-- Automatic dynamic headers that adapt based on document structure
-- Properly formatted abstract page
+- Customizable title page
 - Automatic table of contents
-- Page numbering with Roman numerals for front matter and Arabic for main content
-- Bibliography support
-- Clean typography with the ITU-preferred Open Sans font
+- bibliography system for sources and references
+- Glossary system for technical terms
 
 ## Getting Started
 
-1. **Font Installation**
+1. **Font Installation (optional)**
    - The template uses Open Sans (ITU's logo font) for the title page
    - The template will fall back to system fonts if Open Sans isn't installed
    - Download from [Google Fonts](https://fonts.google.com/specimen/Open+Sans) if needed
@@ -29,7 +22,7 @@ A professionally formatted template for academic documents at the IT University 
    - Edit the project parameters in [`main.typ`](main.typ) to set your details:
      ```typst
      #show: project.with(
-       department: "Department of Computer Science",
+       department: "Department",
        course_name: "Course Name",
        course_code: "Course Code",
        document_type: "Document Type",
@@ -37,31 +30,51 @@ A professionally formatted template for academic documents at the IT University 
        authors: (...),
        max_author_columns: 2,
        advisers: (...),
-       abstract: lorem(200),
+       max_adviser_columns: 3,
      )
      ```
 
 3. **Write your content**
-   - Add your document content in [`main.typ`](main.typ) after the configuration
-   - Use standard Typst syntax for formatting and references
-   - Level 1 headings (`= Heading`) automatically create page breaks
+   - The sections are split into files for organization (see the `sections` folder)
+   - you can include new sections by adding them to the [`main.typ`](main.typ) file
 
-## Template Components
 
-The modular template separates functionality into clear components:
+## Get Started with Typst
 
-- `build_main_header` / `build_secondary_header` - Create page headers
-- `create_dynamic_header` - Generates headers based on document position
-- `create_title_page` - Formats the title page with all metadata
-- `create_abstract_page` - Sets up the abstract with proper formatting
-- `create_toc_page` - Generates the table of contents
-- `setup_section_page_breaks` - Manages section-based page breaks
+### Resources
+- [Typst for LaTeX users](https://typst.app/docs/guides/guide-for-latex-users/)
+- [Official Typst Documentation](https://typst.app/docs)
+- [Typst Examples Book](https://sitandr.github.io/typst-examples-book/book/)
+- [Awesome Typst](https://github.com/qjcg/awesome-typst)
 
-## Customization
+### Installation
+> [!NOTE]  
+> There is also an online editor for Typst at [typst.app](https://typst.app/)
 
-The template provides several customization options:
-- Configure multiple authors with `max_author_columns` 
-- Add optional advisers with `max_adviser_columns`
-- Customize department, course details, and document type
-- Adjust logo size and placement
-- Change the default font if needed
+1. **Install Typst**
+   - [Typst GitHub Repository](https://github.com/typst/typst?tab=readme-ov-file#installation)
+   
+2. **Editor Integration**
+   - [TinyMist Extension](https://github.com/Myriad-Dreamin/tinymist?tab=readme-ov-file#installation) for VSCode, NeoVim, etc.
+
+## Working with References
+
+### Bibliography
+- Add references to [`bib.yaml`](bib.yaml)
+- Reference in text using `@citation_key` or `#ref(<citation_key>)`
+- Bibliography generated automatically at document end
+- Supports articles, books, proceedings, web resources, and more
+
+### Glossary
+- Define terms in [`glossary.yaml`](glossary.yaml) with short/long forms and descriptions
+- Reference terms using `@term_key` syntax
+- First usage shows full form, subsequent uses show short form
+- Force full form with `#gls("term_key", long: true)`
+- Use plural forms with `@term_key:pl` or `#glspl("term_key")`
+
+
+## Credits
+This template is built on the foundation provided by [Simple Typst Thesis](https://github.com/zagoli/simple-typst-thesis/) by Zagoli. 
+The original work has been expanded with additional features, and ITU-specific styling.
+
+

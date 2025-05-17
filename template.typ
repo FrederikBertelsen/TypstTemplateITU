@@ -100,9 +100,9 @@
   document_type,
   title,
   authors,
-  max_author_columns,
+  author_columns,
   advisers,
-  max_adviser_columns,
+  adviser_columns,
   font,
   date,
 ) = {
@@ -160,7 +160,7 @@
     ],
   )
 
-  let author_columns = calc.min(max_author_columns, authors.len())
+  let author_columns = calc.min(author_columns, authors.len())
   grid(
     columns: (1fr,) * author_columns,
     gutter: 2em,
@@ -183,7 +183,7 @@
     align(center, text(1.2em, "Advised by"))
     v(0.8em)
 
-    let adviser_columns = calc.min(max_adviser_columns, advisers.len())
+    let adviser_columns = calc.min(adviser_columns, advisers.len())
     grid(
       columns: (1fr,) * adviser_columns,
       gutter: 2em,
@@ -306,9 +306,9 @@
   title: "",
   abstract: [],
   authors: (),
-  max_author_columns: 3,
+  author_columns: 3,
   advisers: (),
-  max_adviser_columns: 3,
+  adviser_columns: 3,
   font: "New Computer Modern",
   show_page_total: true,
   date: datetime.today().display("[month repr:long] [day], [year]"),
@@ -334,9 +334,9 @@
     document_type,
     title,
     authors,
-    max_author_columns,
+    author_columns,
     advisers,
-    max_adviser_columns,
+    adviser_columns,
     font,
     date,
   )

@@ -29,7 +29,7 @@
       email: "jebr@itu.dk",
     ),
   ),
-  max_author_columns: 2,
+  author_columns: 2,
 
   advisers: (
     (
@@ -45,7 +45,7 @@
       email: "rowi@itu.dk",
     ),
   ),
-  max_adviser_columns: 3,
+  adviser_columns: 3,
 
   abstract: include "sections/0_abstract.typ",
 )
