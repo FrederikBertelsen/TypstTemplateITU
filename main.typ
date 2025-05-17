@@ -1,5 +1,7 @@
-#import "template.typ": project
+#import "@preview/glossarium:0.5.6": *
+#show: make-glossary
 
+#import "template.typ": project, read-glossary-entries
 #show: project.with(
   department: "Department of Computer Science",
   course_name: "Course Name",
@@ -48,13 +50,27 @@
 )
 
 // import sections
-#include "sections/1_terms_abbreviations.typ"
-#include "sections/2_introduction.typ"
-#include "sections/3_background.typ"
-#include "sections/4_analysis.typ"
-#include "sections/5_discussion.typ"
-#include "sections/6_conclusion.typ"
-#include "sections/7_future_work.typ"
+#include "sections/1_introduction.typ"
+#include "sections/2_background.typ"
+#include "sections/3_analysis.typ"
+#include "sections/4_discussion.typ"
+#include "sections/5_conclusion.typ"
+#include "sections/6_future_work.typ"
+
+// Glossary section
+// #let entry-list = yaml("glossary.yaml")
+// #register-glossary(entry-list)
+// #print-glossary(entry-list, show-all: true)
+
+#pagebreak(weak: true)
+#set page(header: [])
+= Glossary
+
+#let entry-list = read-glossary-entries("glossary.yaml")
+
+#register-glossary(entry-list)
+// Your document body
+#print-glossary(entry-list, show-all: true)
 
 // Bibliography section
 #pagebreak(weak: true)

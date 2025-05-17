@@ -1,8 +1,8 @@
 = Introduction
-#lorem(400) @feminism
+#lorem(400)
 
 == Motivation
-#lorem(300) @dependence
+#lorem(300)
 
 == Research Questions
 #lorem(200)

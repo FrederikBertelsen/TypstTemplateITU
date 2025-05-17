@@ -206,6 +206,7 @@
   pagebreak()
 }
 
+
 #let create_abstract_page(abstract) = {
   set page(numbering: "I", number-align: center, margin: 10em)
   v(1fr)
@@ -220,6 +221,76 @@
 #let create_toc_page() = {
   outline(depth: 3)
   pagebreak()
+}
+
+#let read-glossary-entries(file) = {
+  let entries = yaml(file)
+
+  assert(
+    type(entries) == dictionary,
+    message: "The glossary at `" + file + "` is not a dictionary",
+  )
+
+  for (k, v) in entries.pairs() {
+    assert(
+      type(v) == dictionary,
+      message: "The glossary entry `" + k + "` in `" + file + "` is not a dictionary",
+    )
+
+    for key in v.keys() {
+      assert(
+        key
+          in (
+            "short",
+            "long",
+            "description",
+            "group",
+            "plural",
+            "longplural",
+            "artshort",
+            "artlong",
+          ),
+        message: "Found unexpected key `" + key + "` in glossary entry `" + k + "` in `" + file + "`",
+      )
+    }
+
+    assert(
+      type(v.short) == str,
+      message: "The short form of glossary entry `" + k + "` in `" + file + "` is not a string",
+    )
+
+    if "long" in v {
+      assert(
+        type(v.long) == str,
+        message: "The long form of glossary entry `" + k + "` in `" + file + "` is not a string",
+      )
+    }
+
+    if "description" in v {
+      assert(
+        type(v.description) == str,
+        message: "The description of glossary entry `" + k + "` in `" + file + "` is not a string",
+      )
+    }
+
+    if "group" in v {
+      assert(
+        type(v.group) == str,
+        message: "The optional group of glossary entry `" + k + "` in `" + file + "` is not a string",
+      )
+    }
+  }
+
+  return entries
+    .pairs()
+    .map(((key, entry)) => (
+      key: key,
+      short: eval(entry.at("short", default: ""), mode: "markup"),
+      long: eval(entry.at("long", default: ""), mode: "markup"),
+      description: eval(entry.at("description", default: ""), mode: "markup"),
+      group: entry.at("group", default: ""),
+      // file: file,
+    ))
 }
 
 // Main project function
@@ -248,6 +319,7 @@
   show math.equation: it => set text(weight: 400)
   set heading(numbering: "1.1")
   set par(justify: true)
+  show link: set text(fill: blue.darken(60%))
 
   // Create title page
   create_title_page(

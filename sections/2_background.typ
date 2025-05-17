@@ -6,6 +6,6 @@
 == More related work
 #lorem(100)
 #figure(
-  image("../Business.jpg", width: 70%),
+  image("../figures/Business.jpg", width: 70%),
   caption: "Serious Business.",
 )
