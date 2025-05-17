@@ -1,5 +1,6 @@
-#import "@preview/glossarium:0.5.6": *
-#show: make-glossary
+#import "@preview/glossarium:0.5.6": make-glossary, print-glossary
+#show : make-glossary
+#include "utilities/glossary-import.typ"
 
 #import "template.typ": project, read-glossary-entries
 #show: project.with(
@@ -51,7 +52,7 @@
 
 
 
-// import sections
+// import sections from the sections folder
 #include "sections/1_introduction.typ"
 #include "sections/2_background.typ"
 #include "sections/3_analysis.typ"
@@ -61,16 +62,23 @@
 
 
 
+// Back matter
+#set page(header: [])
+
 // Glossary section
 #pagebreak(weak: true)
-#set page(header: [])
 = Glossary
-#let entry-list = read-glossary-entries("glossary.yaml")
-#register-glossary(entry-list)
-#print-glossary(entry-list, show-all: true)
+#print-glossary(
+  read-glossary-entries("glossary.yaml"),
+  show-all: true, // enable this to show all entries
+)
 
 // Bibliography section
 #pagebreak(weak: true)
-#set page(header: [])
 = Bibliography
-#bibliography("bib.yaml", style: "ieee", title: none, full: true)
+#bibliography(
+  "bib.yaml",
+  style: "ieee",
+  title: none,
+  full: true, // enable this to show all references
+)

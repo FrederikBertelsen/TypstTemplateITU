@@ -1,8 +1,15 @@
+// this is needed to make the glossary work
+#include "../utilities/glossary-import.typ"
+
+
+
 = Introduction
 #lorem(400)
 
 == Motivation
 #lorem(300)
+
+This is a reference to a glossary entry: @ai
 
 == Research Questions
 #lorem(200)

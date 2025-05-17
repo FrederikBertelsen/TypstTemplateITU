@@ -1,3 +1,8 @@
+// this is needed to make the glossary work
+#include "../utilities/glossary-import.typ"
+
+
+
 = Background
 #lorem(200)
 == Related Work
