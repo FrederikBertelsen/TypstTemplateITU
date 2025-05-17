@@ -200,8 +200,8 @@
     )
   }
 
-  v(8em)
-  align(center, text(1.2em, date))
+  // Date at bottom
+  place(bottom + center, text(1.2em, date))
 
   pagebreak()
 }
