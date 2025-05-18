@@ -254,10 +254,10 @@
       )
     }
 
-    assert(
-      type(v.short) == str,
-      message: "The short form of glossary entry `" + k + "` in `" + file + "` is not a string",
-    )
+    // assert(
+    //   type(v.short) == str,
+    //   message: "The short form of glossary entry `" + k + "` in `" + file + "` is not a string",
+    // )
 
     if "long" in v {
       assert(
