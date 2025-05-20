@@ -106,6 +106,8 @@
   font,
   date,
 ) = {
+  set par(justify: false)
+
   v(1em)
   set text(font: ("Open Sans", font), lang: "en")
 
@@ -147,7 +149,7 @@
     v(4em)
   }
 
-  align(center, text(2.6em, weight: "bold", title))
+  align(center, text(2.6em, weight: "bold", hyphenate: false, title))
 
   // Authors section
   align(
@@ -202,6 +204,8 @@
 
   // Date at bottom
   place(bottom + center, text(1.2em, date))
+
+  set par(justify: true)
 
   pagebreak()
 }
