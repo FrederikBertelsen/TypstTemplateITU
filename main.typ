@@ -1,4 +1,4 @@
-#import "template.typ": project, read-glossary-entries, read-glossary-entries
+#import "itu_template.typ": project, read-glossary-entries, read-glossary-entries
 #import "@preview/glossarium:0.5.6": *
 #show: make-glossary
 #register-glossary(read-glossary-entries("glossary.yaml"))
