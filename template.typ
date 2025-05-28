@@ -149,7 +149,7 @@
     v(4em)
   }
 
-  align(center, text(2.6em, weight: "bold", hyphenate: false, title))
+  align(center, text(2.6em, weight: "bold", title))
 
   // Authors section
   align(
@@ -202,7 +202,6 @@
     )
   }
 
-  // Date at bottom
   place(bottom + center, text(1.2em, date))
 
   set par(justify: true)
@@ -300,8 +299,8 @@
 // Main project function
 // This function is the main entry point for the document template.
 #let project(
-  logo: "logo/logo.svg",
-  logo_dark_mode: "logo/logo_dark_mode.svg",
+  logo: "logo/logo.png",
+  logo_dark_mode: "logo/logo_dark_mode.png",
   logo_small: "logo/logo_small.png",
   logo_small_dark_mode: "logo/logo_small_dark_mode.png",
   logo_width: 70%,
@@ -334,6 +333,7 @@
   let link_fill = if dark_mode { blue.lighten(60%) } else { blue.darken(60%) }
   show link: set text(fill: link_fill)
   show ref: set text(fill: link_fill)
+  set table(stroke: if dark_mode { white } else { black })
 
 
   // Create title page
