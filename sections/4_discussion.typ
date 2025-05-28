@@ -8,13 +8,17 @@
 #parbreak()
 #lorem(350)
 #v(2em)
+
 #figure(
   table(
-    columns: 5,
-    [Aligner], [publication], [Indexing], [Pairwise alignment], [Max. read length (bp)],
+    columns: (auto,) * 5,
+    align: center,
+    inset: 1em,
+    [*Aligner*], [*Publication*], [*Indexing*], [*alignment*], [*Max. read length (bp)*],
     [BWA], [2009], [BWT-FM], [Semi-Global], [125],
-    [Bowtie], [2009], [BWT-FM], [HD], [76],
-    [CloudBurst], [2009], [Hashing], [Landau-Vishkin], [36],
-    [GNUMAP], [2009], [Hashing], [NW], [36],
+    [#raw("Bowtie")], [2009], [BWT-FM], [HD], [76],
+    [#raw("CloudBurst")], [2009], [Hashing], [Landau-#raw("Vishkin")], [36],
+    [#raw("GNUMAP")], [2009], [Hashing], [NW], [36],
   ),
-)
+  caption: "Comparison of different alignment tools",
+) <example-table>

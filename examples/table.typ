@@ -1,7 +1,6 @@
 = Table Examples
 
 == Basic Tables
-
 // Simple table using the built-in table function
 #table(
   columns: (auto, auto, auto),
@@ -43,7 +42,6 @@
 )
 
 == Column Sizing
-
 // Control column widths
 #table(
   columns: (20%, 50%, 30%),

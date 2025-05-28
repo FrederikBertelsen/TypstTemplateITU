@@ -1,9 +1,6 @@
-#import "@preview/cetz:0.3.4"
-
 = Figure Examples
 
 == Basic Image Figures
-
 // Basic figure with image
 #figure(
   image("../figures/Business.jpg", width: 70%),
@@ -12,67 +9,39 @@
 
 You can reference figures like this: @basic-fig
 
-== Figure Alignment
-
-// Left-aligned figure
-#figure(
-  align: left,
-  image("../figures/Business.jpg", width: 40%),
-  caption: "Left-aligned figure.",
-)
-
-Some text between figures to show text flow around left and right aligned figures.
-
-// Right-aligned figure
-#figure(
-  align: right,
-  image("../figures/Business.jpg", width: 40%),
-  caption: "Right-aligned figure.",
-)
-
-#clearpage()
-
 == Table Figures
-
 // Table as a figure
 #figure(
   table(
     columns: (auto, auto, auto),
-    inset: 10pt,
     align: center,
-    ["Name"], ["Value"], ["Description"],
-    "Alpha", "10", "First value",
-    "Beta", "20", "Second value",
-    "Gamma", "30", "Third value",
+    inset: 1em,
+    [*Name*], [*Age*], [*Role*],
+    [Alice], [28], [Designer],
+    [Bob], [34], [Developer],
+    [Charlie], [45], [Manager],
   ),
-  caption: "Table as a figure.",
+  caption: "A simple table with a caption",
 ) <table-fig>
 
 See @table-fig for the data values.
 
 == Code Block Figures
-
 // Code block as a figure
 #figure(
-  ```python
-  def hello_world():
-      print("Hello, world!")
-      return True
-  ```
-  ,
+  block(
+    stroke: 1pt + luma(150),
+    fill: luma(240),
+    inset: 1em,
+    ```python
+    def hello_world():
+        print("Hello, world!")
+        return True
+    ```,
+  ),
   caption: "Code example as a figure.",
 ) <code-fig>
 
-== Diagram Figures
-
-// Using CeTZ for diagrams
-#figure(
-  cetz.canvas({
-    cetz.draw.rect((0,0), (4,3))
-    cetz.draw.circle((2,1.5), 1)
-  }),
-  caption: "A simple diagram created with CeTZ.",
-) <diagram-fig>
 
 == Subfigures
 
@@ -92,22 +61,3 @@ See @table-fig for the data values.
   ),
   caption: "A figure containing two subfigures.",
 ) <subfig>
-
-== Custom Styling
-
-// Custom styling for figures
-#set figure(
-  supplement: "Fig.",
-  numbering: "I",
-)
-
-#figure(
-  image("../figures/Business.jpg", width: 50%),
-  caption: "Figure with custom styling.",
-)
-
-// Reset to default
-#set figure(
-  supplement: auto,
-  numbering: "1",
-)
